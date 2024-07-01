@@ -3,8 +3,9 @@ const url = require("url");
 
 function getData(address, port, callback) {
     const start_time = new Date();
+    let latency;
     const client = net.connect(port, address, () => {
-        const latency = Math.round(new Date() - start_time);
+        latency = Math.round(new Date() - start_time);
         client.write(Buffer.from([0xfe, 0x01]));
     });
 
